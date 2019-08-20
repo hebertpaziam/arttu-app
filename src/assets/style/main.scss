@@ -1,0 +1,9 @@
+// ONLY VARIABLES AND MIXINS
+// these styles are declared on vue.config.js because they don't generate any css on build process
+// "1-settings";
+// "2-tools";
+
+//IT SCSS GLOBAL STRUCTURE
+@import "3-generic";
+@import "4-base";
+@import "5-trumps";
