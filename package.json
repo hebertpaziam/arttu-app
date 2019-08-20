@@ -47,7 +47,7 @@
     }
   },
   "gitHooks": {
-    "pre-commit": "vue-cli-service lint"
+    "pre-commit": "lint-staged"
   },
   "browserslist": [
     "> 1%",
