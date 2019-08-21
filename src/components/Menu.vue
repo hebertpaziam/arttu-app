@@ -22,7 +22,7 @@ export default {
   components: {
     FontAwesomeIcon
   },
-  data: function() {
+  data() {
     return {
       userAvatar: "",
       isLoggedIn: true,

@@ -1,21 +1,25 @@
 <template>
   <div class="component-we-are">
     <div class="content">
-      <h2 class="title">Estamos no Brasil e em Portugal!</h2>
-      <div class="desc">Escontre sua tattoo pela cidade que deseja também :)</div>
+      <h2 class="title">{{title}}</h2>
+      <div class="desc">{{desc}}</div>
     </div>
     <ul class="cities">
-      <li>RIO DE JANEIRO</li>
-      <li>AVEIRO</li>
-      <li>BRAGA</li>
-      <li>PORTO</li>
+      <li v-for="city in cities" :key="city">{{city}}</li>
     </ul>
   </div>
 </template>
 
 <script>
 export default {
-  name: "WeAre"
+  name: "WeAre",
+  data() {
+    return {
+      title: "Estamos no Brasil e em Portugal!",
+      desc: "Escontre sua tattoo pela cidade que deseja também :)",
+      cities: ["RIO DE JANEIRO", "AVEIRO", "BRAGA", "PORTO"]
+    };
+  }
 };
 </script>
 

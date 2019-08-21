@@ -38,8 +38,12 @@ export default {
           desc: "TRADITIONAL"
         },
         {
-          src: "/images/tattoos/Wrench-and-heart-tattoo.jpg",
+          src: "/images/tattoos/wrench-and-heart.jpg",
           desc: "BLACKWORK"
+        },
+        {
+          src: "/images/tattoos/tupac.jpg",
+          desc: "HIP-HOP"
         }
       ],
       flickityOptions: {

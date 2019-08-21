@@ -1,7 +1,7 @@
 <template>
   <div class="component-news">
     <div class="bg-pattern">
-      <h2 class="title">NOVIDADES</h2>
+      <h2 class="title">{{title}}</h2>
     </div>
     <Carousel />
   </div>
@@ -13,6 +13,11 @@ export default {
   name: "News",
   components: {
     Carousel
+  },
+  data() {
+    return {
+      title: "NOVIDADES"
+    };
   }
 };
 </script>

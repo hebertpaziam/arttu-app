@@ -1,8 +1,8 @@
 <template>
   <div class="component-main-banner">
     <Menu></Menu>
-    <img class="logo" src="/images/logos/logo_full-black.png" />
-    <h1 class="title">FAZER SUA TATUAGEM NUNCA FOI TÃO SIMPLES!</h1>
+    <img class="logo" :src="logo" />
+    <h1 class="title">{{title}}</h1>
   </div>
 </template>
 
@@ -13,6 +13,12 @@ export default {
   name: "MainBanner",
   components: {
     Menu
+  },
+  data() {
+    return {
+      logo: "/images/logos/logo_full-black.png",
+      title: "FAZER SUA TATUAGEM NUNCA FOI TÃO SIMPLES!"
+    };
   }
 };
 </script>
