@@ -24,7 +24,7 @@ export default {
   },
   data: function() {
     return {
-      userAvatar: "/images/tattoos/japanese.jpg",
+      userAvatar: "",
       isLoggedIn: true,
       username: "Daniel"
     };
@@ -64,7 +64,6 @@ export default {
       margin-left: 10px;
       font-weight: 700;
       text-transform: uppercase;
-      @include font-primary-family();
     }
   }
 }

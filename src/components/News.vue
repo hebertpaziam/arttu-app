@@ -19,7 +19,7 @@ export default {
 
 <style lang="scss" >
 .component-news {
-  padding: 40px 0px 20px 0px;
+  padding: 40px 0px;
 
   > .bg-pattern {
     width: 100%;
@@ -34,7 +34,6 @@ export default {
       display: inline-block;
       margin: auto;
       padding: 0px 20px;
-      @include font-primary-family();
       color: $primary-color;
       font-size: 2rem;
       background-color: #ffffff;

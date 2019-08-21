@@ -113,7 +113,7 @@ export default {
           top: 0;
           left: 0;
           opacity: 0.5;
-          background-color: #e57a00;
+          background-color: $feature-color;
           z-index: -1;
         }
       }

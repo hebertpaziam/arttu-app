@@ -7,7 +7,6 @@ body {
   font-size: 16px;
 }
 h1 {
-  @include font-primary-family();
   color: $primary-color;
   font-size: 2.8rem;
   font-weight: 700;
