@@ -17,7 +17,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" >
 .component-news {
   padding: 40px 0px 20px 0px;
 

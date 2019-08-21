@@ -32,7 +32,7 @@ export default {
 };
 </script>
 
-  <style lang="scss" scoped>
+  <style lang="scss">
 .component-menu {
   > .logged-in {
     display: flex;
