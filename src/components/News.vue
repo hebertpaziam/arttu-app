@@ -1,19 +1,44 @@
 <template>
   <div class="component-news">
-    <h1>News</h1>
-    <Carousel/>
+    <div class="bg-pattern">
+      <h2 class="title">NOVIDADES</h2>
+    </div>
+    <Carousel />
   </div>
 </template>
 
 <script>
-import Carousel from '@/components/Carousel.vue'
+import Carousel from "@/components/Carousel.vue";
 export default {
   name: "News",
-  components:{
+  components: {
     Carousel
   }
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
+.component-news {
+  padding: 40px 0px 20px 0px;
+
+  > .bg-pattern {
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    text-align: center;
+    background: radial-gradient(circle at center, #888 20%, transparent 22%),
+      #ffffff;
+    background-size: 25px;
+
+    > .title {
+      display: inline-block;
+      margin: auto;
+      padding: 0px 20px;
+      @include font-primary-family();
+      color: $primary-color;
+      font-size: 2rem;
+      background-color: #ffffff;
+    }
+  }
+}
 </style>
