@@ -1,5 +1,5 @@
 <template>
-  <div id="component-carousel">
+  <div class="component-carousel">
     <h1>Carousel</h1>
   </div>
 </template>

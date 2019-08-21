@@ -1,5 +1,5 @@
 <template>
-  <div id="component-footer">
+  <div class="component-footer">
     <h1>Footer</h1>
   </div>
 </template>

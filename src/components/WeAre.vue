@@ -1,5 +1,5 @@
 <template>
-  <div id="component-we-are">
+  <div class="component-we-are">
     <h1>We Are</h1>
   </div>
 </template>

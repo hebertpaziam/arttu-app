@@ -1,5 +1,5 @@
 <template>
-  <div id="component-menu">
+  <div class="component-menu">
     <h1>Menu</h1>
   </div>
 </template>

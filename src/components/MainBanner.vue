@@ -1,6 +1,8 @@
 <template>
-  <div id="component-main-banner">
+  <div class="component-main-banner">
     <Menu></Menu>
+    <img class="logo" src="/images/logos/logo_full-black.png" />
+    <h1 class="title">FAZER SUA TATUAGEM NUNCA FOI TÃO SIMPLES!</h1>
   </div>
 </template>
 
@@ -16,10 +18,41 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  #component-main-banner{
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-image: url('/images/backgrounds/rock-paper-scissors.jpg')
+.component-main-banner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100vh;
+
+  background-color: #f0e2e1;
+  background-size: contain;
+  background-position: center 90%;
+  background-repeat: no-repeat;
+  background-image: url("/images/backgrounds/rock-paper-scissors.png");
+
+  > .component-menu {
+    position: absolute;
+    top: 30px;
+    right: 30px;
   }
+
+  > .logo {
+    width: 206.5px;
+    height: auto;
+    margin: 30px auto;
+  }
+
+  > .title {
+    width: 80%;
+    max-width: 650px;
+    text-align: center;
+    color: $primary-color;
+    font-size: 2.8rem;
+    font-weight: 700;
+    line-height: 3.5rem;
+    margin: 0px;
+  }
+}
 </style>

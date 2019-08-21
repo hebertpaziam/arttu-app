@@ -1,5 +1,5 @@
 <template>
-  <div id="view-upload"></div>
+  <div class="view-upload"></div>
 </template>
 
 <script>

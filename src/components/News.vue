@@ -1,5 +1,5 @@
 <template>
-  <div id="component-news">
+  <div class="component-news">
     <h1>News</h1>
     <Carousel/>
   </div>

@@ -1,5 +1,5 @@
 <template>
-  <div id="view-home">
+  <div class="view-home">
     <MainBanner />
     <News />
     <WeAre />
