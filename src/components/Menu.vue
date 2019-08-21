@@ -2,26 +2,21 @@
   <div class="component-menu">
     <button v-if="isLoggedIn" type="button" class="logged-in">
       <div class="avatar">
-        <FontAwesomeIcon icon="user-circle" />
+        <fa-icon icon="user-circle" />
         <span :style="{backgroundImage: `url(${userAvatar})`}" class="picture"></span>
       </div>
 
       <div class="greetings">
         Olá, {{ username }}
-        <FontAwesomeIcon icon="caret-down" />
+        <fa-icon icon="caret-down" />
       </div>
     </button>
   </div>
 </template>
 
   <script>
-import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-
 export default {
   name: "Menu",
-  components: {
-    FontAwesomeIcon
-  },
   data() {
     return {
       userAvatar: "",

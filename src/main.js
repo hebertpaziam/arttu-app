@@ -3,10 +3,10 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 
-import { library } from "@fortawesome/fontawesome-svg-core";
-import {faUserCircle, faCaretDown} from "@fortawesome/free-solid-svg-icons";
+import "./font-awesome";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
-library.add(faUserCircle, faCaretDown);
+Vue.component("fa-icon", FontAwesomeIcon);
 Vue.config.productionTip = false;
 
 new Vue({

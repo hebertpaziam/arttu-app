@@ -32,6 +32,8 @@ export default {
   justify-content: space-around;
   min-height: 320px;
   padding: 150px 30px 30px 30px;
+  opacity: 1;
+  z-index: 1;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -47,17 +49,18 @@ export default {
   }
   > .content {
     > .title {
-      font-weight: 700;
       margin: auto;
+      font-weight: 700;
     }
     > .desc {
-      font-weight: 300;
       color: #aaa;
+      font-size: 1.75rem;
+      font-weight: 300;
     }
   }
   > .cities {
     list-style: none;
-    width: 300px;
+    width: 230px;
     font-weight: 700;
     > li {
       margin: 20px 0px;
@@ -75,9 +78,6 @@ export default {
       }
     }
   }
-
-  opacity: 1;
-  z-index: 1;
 
   &::before {
     content: "";
