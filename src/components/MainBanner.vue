@@ -42,17 +42,16 @@ export default {
     width: 206.5px;
     height: auto;
     margin: 30px auto;
+
+    @media screen and (max-width: 900px) {
+      margin: 70px auto 30px auto;
+    }
   }
 
   > .title {
     width: 80%;
     max-width: 650px;
     text-align: center;
-    color: $primary-color;
-    font-size: 2.8rem;
-    font-weight: 700;
-    line-height: 3.5rem;
-    margin: 0px;
   }
 }
 </style>

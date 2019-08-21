@@ -40,5 +40,8 @@ export default {
       background-color: #ffffff;
     }
   }
+  > .component-carousel {
+    margin-top: 40px;
+  }
 }
 </style>
