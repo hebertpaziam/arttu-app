@@ -143,24 +143,32 @@ export default {
           > .action {
             width: 100%;
             height: 30px;
+            line-height: 21px;
             margin: 5px auto;
-            padding: 5px 10px;
-            font-weight: 700;
-            font-size: 1rem;
             border: none;
             border-radius: 30px;
+            transition: all 150ms ease-in-out;
           }
 
           > .field {
+            padding: 0px 10px;
             color: #fff;
+            font-size: 1rem;
             background-color: #999;
             &::placeholder {
               color: #fff;
             }
           }
           > .action {
+            padding: 4px 20.8px;
             color: #000;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-transform: uppercase;
             background-color: $primary-color;
+            &:hover {
+              background-color: $primary-color-lighten;
+            }
           }
         }
 

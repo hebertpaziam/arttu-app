@@ -1,9 +1,9 @@
   <template>
   <div class="component-menu">
-    <button v-if="user.isAuthenticated" type="button" class="authenticated">
+    <button type="button" class="authenticated" v-if="user.isAuthenticated" @click="addTattoo">
       <div class="avatar">
         <fa-icon icon="user-circle" />
-        <span :style="{backgroundImage: `url(${user.avatar})`}" class="picture"></span>
+        <span class="picture" :style="{backgroundImage: `url(${user.avatar})`}"></span>
       </div>
 
       <div class="greetings">
@@ -11,6 +11,7 @@
         <fa-icon icon="caret-down" />
       </div>
     </button>
+    <button type="button" class="not-authenticated" v-else @click="authenticateUser">Entre</button>
   </div>
 </template>
 
@@ -20,7 +21,20 @@ export default {
   name: "Menu",
   computed: mapState({
     user: state => state.user
-  })
+  }),
+  methods: {
+    addTattoo() {
+      let newId = Math.ceil(Math.random() * (100 - 7) + 7);
+      this.$store.commit("addTattoo", {
+        id: newId,
+        src: "/images/tattoos/tupac.jpg",
+        desc: `HIP-HOP ${newId}`
+      });
+    },
+    authenticateUser() {
+      this.$store.commit("authenticate");
+    }
+  }
 };
 </script>
 
@@ -64,6 +78,24 @@ export default {
         white-space: nowrap;
         margin-right: 5px;
       }
+    }
+  }
+  > .not-authenticated {
+    width: 150px;
+    line-height: 21px;
+    margin: 5px auto;
+    padding: 4px 20.8px;
+    color: #000;
+    background-color: $primary-color;
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 30px;
+    transition: all 150ms ease-in-out;
+
+    &:hover {
+      background-color: $primary-color-lighten;
     }
   }
 }

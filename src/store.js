@@ -8,7 +8,7 @@ export default new Vuex.Store({
     user: {
       avatar: "",
       name: "Daniel",
-      isAuthenticated: true
+      isAuthenticated: false
     },
     tattoos: [
       {
@@ -44,14 +44,14 @@ export default new Vuex.Store({
     ]
   },
   mutations: {
-    addTattoo(tattoo) {
-      this.state.tattoos = [...this.state.tattoos, tattoo];
+    authenticate() {
+      this.state.user.isAuthenticated = true;
     },
-    removeTattoo(tattooId) {
-      this.state.tattoos = this.state.tattoos.filter(
-        item => item.id !== tattooId
-      );
+    addTattoo(state, tattoo) {
+      state.tattoos.push(tattoo);
+    },
+    removeTattoo(state, tattooId) {
+      state.tattoos = state.tattoos.filter(item => item.id !== tattooId);
     }
-  },
-  actions: {}
+  }
 });

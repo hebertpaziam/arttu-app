@@ -32,6 +32,9 @@ export default {
         wrapAround: true
       }
     };
+  },
+  updated() {
+   this.$refs.flickity.rerender();
   }
 };
 </script>
