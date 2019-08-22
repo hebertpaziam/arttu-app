@@ -1,9 +1,9 @@
 <template>
-  <div class="component-carousel" v-if="tattoos && tattoos.length">
+  <div class="component-carousel" v-if="collection && collection.length">
     <flickity ref="flickity" :options="flickityOptions">
-      <div class="carousel-cell" v-for="(tattoo, index) in tattoos" :key="index">
-        <div class="content" :style="{ backgroundImage: `url(${tattoo.src})` }">
-          <span class="desc" :title="tattoo.desc">{{tattoo.desc}}</span>
+      <div class="carousel-cell" v-for="item in collection" :key="item.id">
+        <div class="content" :style="{ backgroundImage: `url(${item.src})` }">
+          <span class="desc" :title="item.desc">{{item.desc}}</span>
         </div>
       </div>
     </flickity>
@@ -18,39 +18,16 @@ export default {
   components: {
     Flickity
   },
+  props: {
+    collection: Array
+  },
   data() {
     return {
-      tattoos: [
-        {
-          src: "/images/tattoos/old-school.jpg",
-          desc: "OLD SCHOOL"
-        },
-        {
-          src: "/images/tattoos/blackwork.jpg",
-          desc: "BLACKWORK"
-        },
-        {
-          src: "/images/tattoos/japanese.jpg",
-          desc: "JAPANESE"
-        },
-        {
-          src: "/images/tattoos/traditional.jpg",
-          desc: "TRADITIONAL"
-        },
-        {
-          src: "/images/tattoos/wrench-and-heart.jpg",
-          desc: "BLACKWORK"
-        },
-        {
-          src: "/images/tattoos/tupac.jpg",
-          desc: "HIP-HOP"
-        }
-      ],
       flickityOptions: {
         autoPlay: 3000,
         cellAlign: "center",
         contain: true,
-        groupCells:true,
+        groupCells: true,
         pauseAutoPlayOnHover: false,
         wrapAround: true
       }

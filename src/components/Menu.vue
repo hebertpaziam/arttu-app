@@ -1,13 +1,13 @@
   <template>
   <div class="component-menu">
-    <button v-if="isLoggedIn" type="button" class="logged-in">
+    <button v-if="user.isAuthenticated" type="button" class="authenticated">
       <div class="avatar">
         <fa-icon icon="user-circle" />
-        <span :style="{backgroundImage: `url(${userAvatar})`}" class="picture"></span>
+        <span :style="{backgroundImage: `url(${user.avatar})`}" class="picture"></span>
       </div>
 
       <div class="greetings">
-        Olá, {{ username }}
+        <span class="username">Olá, {{ user.name }}</span>
         <fa-icon icon="caret-down" />
       </div>
     </button>
@@ -15,21 +15,18 @@
 </template>
 
   <script>
+import { mapState } from "vuex";
 export default {
   name: "Menu",
-  data() {
-    return {
-      userAvatar: "",
-      isLoggedIn: true,
-      username: "Daniel"
-    };
-  }
+  computed: mapState({
+    user: state => state.user
+  })
 };
 </script>
 
   <style lang="scss">
 .component-menu {
-  > .logged-in {
+  > .authenticated {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -56,9 +53,17 @@ export default {
       }
     }
     > .greetings {
+      display: flex;
+      max-width: 200px;
       margin-left: 10px;
       font-weight: 700;
-      text-transform: uppercase;
+      > .username {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-transform: uppercase;
+        white-space: nowrap;
+        margin-right: 5px;
+      }
     }
   }
 }

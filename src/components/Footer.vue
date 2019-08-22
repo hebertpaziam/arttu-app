@@ -33,7 +33,7 @@
         <dd class="item">
           <form>
             <input type="email" class="field" placeholder="Email" />
-            <button type="submit" class="action">QUERO RECEBER EMAILS!</button>
+            <button type="button" class="action">QUERO RECEBER EMAILS!</button>
           </form>
         </dd>
       </dl>

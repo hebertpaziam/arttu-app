@@ -3,11 +3,12 @@
     <div class="bg-pattern">
       <h2 class="title">{{title}}</h2>
     </div>
-    <Carousel />
+    <Carousel :collection="tattoos" />
   </div>
 </template>
 
 <script>
+import { mapState } from "vuex";
 import Carousel from "@/components/Carousel.vue";
 export default {
   name: "News",
@@ -18,7 +19,10 @@ export default {
     return {
       title: "NOVIDADES"
     };
-  }
+  },
+  computed: mapState({
+    tattoos: state => state.tattoos
+  })
 };
 </script>
 

@@ -10,12 +10,12 @@ export default new Router({
       path: "/",
       name: "home",
       component: Home
+    },
+    {
+      path: "/upload",
+      name: "upload",
+      component: () =>
+        import(/* webpackChunkName: "about" */ "./views/Upload.vue")
     }
-    // {
-    //   path: "/about",
-    //   name: "about",
-    //   component: () =>
-    //     import(/* webpackChunkName: "about" */ "./views/About.vue")
-    // }
   ]
 });
