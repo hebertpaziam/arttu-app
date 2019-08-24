@@ -5,8 +5,15 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
 export default {
-  name: "AppRoot"
+  name: "AppRoot",
+  mounted() {
+    this.setUser();
+  },
+  methods: {
+    ...mapActions("AuthModule", ["setUser"])
+  }
 };
 </script>
 

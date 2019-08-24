@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapState } from "vuex";
 import Carousel from "@/components/Carousel.vue";
 export default {
   name: "News",
@@ -21,7 +21,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["tattoos"])
+    ...mapState("TattooModule", ["tattoos"])
   }
 };
 </script>

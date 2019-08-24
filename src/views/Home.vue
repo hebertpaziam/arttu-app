@@ -20,7 +20,7 @@ export default {
     MainBanner,
     News,
     WeAre
-  }
+  },
 };
 </script>
 

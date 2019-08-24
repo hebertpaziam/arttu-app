@@ -33,14 +33,7 @@ const state = {
   ]
 };
 
-const getters = {
-  tattoos: state => state.tattoos
-};
-
-const actions = {
-  addTattoo: ({ commit }, tattoo) => commit("ADD_TATTOO", tattoo),
-  removeTattoo: ({ commit }, tattooId) => commit("REMOVE_TATTOO", tattooId)
-};
+const getters = {};
 
 const mutations = {
   ADD_TATTOO: (state, tattoo) => state.tattoos.push(tattoo),
@@ -48,7 +41,13 @@ const mutations = {
     (state.tattoos = state.tattoos.filter(item => item.id !== tattooId))
 };
 
+const actions = {
+  addTattoo: ({ commit }, tattoo) => commit("ADD_TATTOO", tattoo),
+  removeTattoo: ({ commit }, tattooId) => commit("REMOVE_TATTOO", tattooId)
+};
+
 export default {
+  namespaced: true,
   state,
   getters,
   actions,

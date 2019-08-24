@@ -1,39 +1,30 @@
   <template>
   <div class="component-menu">
-    <button type="button" class="authenticated" v-if="user.isAuthenticated" @click="newTattoo">
+    <button type="button" class="authenticated" v-if="isAuthenticated">
       <div class="avatar">
-        <fa-icon icon="user-circle" />
-        <span class="picture" :style="{backgroundImage: `url(${user.avatar})`}"></span>
+        <fa-icon icon="user-circle" class="icon" />
+        <span class="picture" :style="{backgroundImage: `url(${user.avatar_url})`}"></span>
       </div>
 
       <div class="greetings">
-        <span class="username">Olá, {{ user.name }}</span>
+        <span class="username">Olá, {{ getUserFirstName }}</span>
         <fa-icon icon="caret-down" />
       </div>
     </button>
-    <button type="button" class="not-authenticated" v-else @click="authenticate">Entre</button>
+    <button type="button" class="not-authenticated" v-else @click="requestAuthorization">Entre</button>
   </div>
 </template>
 
   <script>
-import { mapGetters, mapActions } from "vuex";
+import { mapState, mapActions, mapGetters } from "vuex";
 export default {
   name: "Menu",
   computed: {
-    ...mapGetters({
-      user: "getUser"
-    })
+    ...mapState("AuthModule", ["user"]),
+    ...mapGetters("AuthModule", ["isAuthenticated", "getUserFirstName"])
   },
   methods: {
-    newTattoo() {
-      let newId = Math.ceil(Math.random() * (100 - 7) + 7);
-      this.addTattoo({
-        id: newId,
-        src: "/images/tattoos/tupac.jpg",
-        desc: `HIP-HOP ${newId}`
-      });
-    },
-    ...mapActions(["authenticate", "addTattoo"])
+    ...mapActions("AuthModule", ["requestAuthorization"])
   }
 };
 </script>
@@ -53,6 +44,10 @@ export default {
       width: 30px;
       height: 30px;
       font-size: 30px;
+
+      > .icon {
+        vertical-align: top;
+      }
 
       > .picture {
         position: absolute;
