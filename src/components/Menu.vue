@@ -1,6 +1,6 @@
   <template>
   <div class="component-menu">
-    <button type="button" class="authenticated" v-if="user.isAuthenticated" @click="addTattoo">
+    <button type="button" class="authenticated" v-if="user.isAuthenticated" @click="newTattoo">
       <div class="avatar">
         <fa-icon icon="user-circle" />
         <span class="picture" :style="{backgroundImage: `url(${user.avatar})`}"></span>
@@ -11,29 +11,29 @@
         <fa-icon icon="caret-down" />
       </div>
     </button>
-    <button type="button" class="not-authenticated" v-else @click="authenticateUser">Entre</button>
+    <button type="button" class="not-authenticated" v-else @click="authenticate">Entre</button>
   </div>
 </template>
 
   <script>
-import { mapState } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 export default {
   name: "Menu",
-  computed: mapState({
-    user: state => state.user
-  }),
+  computed: {
+    ...mapGetters({
+      user: "getUser"
+    })
+  },
   methods: {
-    addTattoo() {
+    newTattoo() {
       let newId = Math.ceil(Math.random() * (100 - 7) + 7);
-      this.$store.commit("addTattoo", {
+      this.addTattoo({
         id: newId,
         src: "/images/tattoos/tupac.jpg",
         desc: `HIP-HOP ${newId}`
       });
     },
-    authenticateUser() {
-      this.$store.commit("authenticate");
-    }
+    ...mapActions(["authenticate", "addTattoo"])
   }
 };
 </script>
