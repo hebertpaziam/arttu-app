@@ -11,7 +11,12 @@ const getters = {
 };
 
 const actions = {
-  authenticate: ({ commit }) => commit("AUTHENTICATE")
+  authenticate: ({ commit }) => {
+    this.$http.get("https://swapi.co/api/people/1").then(data => {
+      alert(data);
+      commit("AUTHENTICATE");
+    });
+  }
 };
 
 const mutations = {
