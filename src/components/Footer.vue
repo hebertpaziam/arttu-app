@@ -52,10 +52,10 @@
         <dt class="header">Social</dt>
         <dd class="item">
           <a class="social-brand" href="javascript:;" target="_blank" rel="noopener noreferrer">
-            <fa-icon :icon="['fab', 'facebook-f']" />
+            <FaIcon :icon="['fab', 'facebook-f']" />
           </a>
           <a class="social-brand" href="javascript:;" target="_blank" rel="noopener noreferrer">
-            <fa-icon :icon="['fab', 'instagram']" />
+            <FaIcon :icon="['fab', 'instagram']" />
           </a>
         </dd>
       </dl>
@@ -67,12 +67,17 @@
 </template>
 
 <script>
+import FaIcon from "@/functional-components/font-awesome";
+
 export default {
-  name: "Footer"
+  name: "Footer",
+  components: {
+    FaIcon
+  }
 };
 </script>
 
-<style  lang="scss" >
+<style lang="scss">
 .component-footer {
   display: flex;
   flex-flow: column;

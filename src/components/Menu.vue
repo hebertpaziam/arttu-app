@@ -1,24 +1,29 @@
-  <template>
+<template>
   <div class="component-menu">
-    <button type="button" class="authenticated" v-if="isAuthenticated">
+    <button v-if="isAuthenticated" type="button" class="authenticated">
       <div class="avatar">
-        <fa-icon icon="user-circle" class="icon" />
-        <span class="picture" :style="{backgroundImage: `url(${user.avatar_url})`}"></span>
+        <FaIcon icon="user-circle" class="icon" />
+        <span class="picture" :style="{ backgroundImage: `url(${user.avatar_url})` }"></span>
       </div>
 
       <div class="greetings">
         <span class="username">Olá, {{ getUserFirstName }}</span>
-        <fa-icon icon="caret-down" />
+        <FaIcon icon="caret-down" />
       </div>
     </button>
-    <button type="button" class="not-authenticated" v-else @click="requestAuthorization">Entre</button>
+    <button v-else type="button" class="not-authenticated" @click="requestAuthorization">Entre</button>
   </div>
 </template>
 
-  <script>
+<script>
 import { mapState, mapActions, mapGetters } from "vuex";
+import FaIcon from "@/functional-components/font-awesome";
+
 export default {
   name: "Menu",
+  components: {
+    FaIcon
+  },
   computed: {
     ...mapState("AuthModule", ["user"]),
     ...mapGetters("AuthModule", ["isAuthenticated", "getUserFirstName"])
@@ -29,7 +34,7 @@ export default {
 };
 </script>
 
-  <style lang="scss">
+<style lang="scss">
 .component-menu {
   > .authenticated {
     display: flex;
