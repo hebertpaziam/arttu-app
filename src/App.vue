@@ -1,18 +1,19 @@
 <template>
-  <div class="app-root">
+  <div class="root-app">
     <router-view />
   </div>
 </template>
 
 <script>
 import { mapActions } from "vuex";
+
 export default {
   name: "AppRoot",
   mounted() {
-    this.setUser();
+    this.signIn();
   },
   methods: {
-    ...mapActions("AuthModule", ["setUser"])
+    ...mapActions("AuthModule", ["signIn"])
   }
 };
 </script>

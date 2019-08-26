@@ -1,21 +1,30 @@
   <template>
   <div class="component-menu">
-    <div class="content">
-      <button type="button" class="sign-in" v-if="!isAuthenticated" @click="requestAuthorization">
-        <fa-icon class="icon" :icon="['fab', 'github']" />Entre
-      </button>
+    <button type="button" class="sign-in" v-if="!isSignedIn" @click="requestAuthorization">
+      <fa-icon class="icon" :icon="['fab', 'github']" />Entre
+    </button>
 
-      <button type="button" class="authenticated" v-else>
+    <div class="authenticated" :class="{'-menu-opened': menuOpened === true}" v-else>
+      <button type="button" class="menu-trigger" @click="toggleMenu">
         <div class="avatar">
           <fa-icon icon="user-circle" class="icon" />
           <span class="picture" :style="{backgroundImage: `url(${user.avatar_url})`}"></span>
         </div>
 
         <div class="greetings">
-          <span class="username">Olá, {{ getUserFirstName }}</span>
-          <fa-icon icon="caret-down" />
+          <span class="username" :title="getUserFirstName">Olá, {{ getUserFirstName }}</span>
+          <fa-icon class="icon" icon="caret-up" v-if="menuOpened" />
+          <fa-icon class="icon" icon="caret-down" v-else />
         </div>
       </button>
+      <div class="content">
+        <button type="button" class="action" @click="toggleModal">
+          <fa-icon icon="upload" class="icon" />Upload
+        </button>
+        <button type="button" class="action" @click="signOut">
+          <fa-icon icon="sign-out-alt" class="icon" />Sair
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -24,34 +33,53 @@
 import { mapState, mapActions, mapGetters } from "vuex";
 export default {
   name: "Menu",
+  data: () => ({
+    menuOpened: false
+  }),
   computed: {
     ...mapState("AuthModule", ["user"]),
-    ...mapGetters("AuthModule", ["isAuthenticated", "getUserFirstName"])
+    ...mapGetters("AuthModule", ["isSignedIn", "getUserFirstName"])
   },
   methods: {
-    ...mapActions("AuthModule", ["requestAuthorization"])
+    toggleMenu() {
+      this.menuOpened = !this.menuOpened;
+    },
+    ...mapActions("TattooModule", ["toggleModal"]),
+    ...mapActions("AuthModule", ["requestAuthorization", "signOut"])
   }
 };
 </script>
 
   <style lang="scss">
 .component-menu {
-  .content {
-    > .authenticated {
-      @include display-flex(nowrap, row, center, center);
+  > .sign-in {
+    width: 150px;
+    @include btn-config($primary-color);
 
+    > .icon {
+      margin-right: 5px;
+    }
+  }
+  > .authenticated {
+    @include display-flex(wrap, column, center, center);
+    background-color: transparent;
+    border-radius: 4px;
+    border: transparent 1px solid;
+    transition: all 100ms linear;
+
+    > .menu-trigger {
+      height: 50px;
       background: none;
       border: none;
+      border-bottom: inherit;
 
       > .avatar {
         position: relative;
+        display: inline-block;
+        vertical-align: middle;
         width: 30px;
         height: 30px;
         font-size: 30px;
-
-        > .icon {
-          vertical-align: top;
-        }
 
         > .picture {
           @include absolute-fulled-up;
@@ -60,23 +88,41 @@ export default {
         }
       }
       > .greetings {
-        @include display-flex(wrap, row, flex-start, flex-start);
-
-        max-width: 200px;
+        display: inline-block;
+        vertical-align: middle;
         margin-left: 10px;
         font-weight: 700;
         > .username {
+          display: inline-block;
+          max-width: 200px;
           margin-right: 5px;
           @include whitespace-nowrap;
         }
       }
     }
-    > .sign-in {
-      width: 150px;
-      @include btn-config($primary-color);
+    > .content {
+      max-height: 0px;
+      overflow: hidden;
+      opacity: 0;
+      border: none;
+      transition: all 100ms linear;
 
-      > .icon {
-        margin-right: 5px;
+      > .action {
+        width: 100%;
+        display: flex;
+        text-decoration: none;
+        @include btn-config(transparent);
+        > .icon {
+          margin-right: 5px;
+        }
+      }
+    }
+    &.-menu-opened {
+      background-color: #ffffff;
+      border: #999 1px solid;
+      > .content {
+        max-height: 100px;
+        opacity: 1;
       }
     }
   }

@@ -1,4 +1,5 @@
 const state = {
+  isModalOpened: false,
   tattoos: [
     {
       id: 1,
@@ -33,15 +34,19 @@ const state = {
   ]
 };
 
-const getters = {};
+const getters = {
+  isModalOpened: state => state.isModalOpened
+};
 
 const mutations = {
+  TOGGLE_MODAL: state => (state.isModalOpened = !state.isModalOpened),
   ADD_TATTOO: (state, tattoo) => state.tattoos.push(tattoo),
   REMOVE_TATTOO: (state, tattooId) =>
     (state.tattoos = state.tattoos.filter(item => item.id !== tattooId))
 };
 
 const actions = {
+  toggleModal: ({ commit }) => commit("TOGGLE_MODAL"),
   addTattoo: ({ commit }, tattoo) => commit("ADD_TATTOO", tattoo),
   removeTattoo: ({ commit }, tattooId) => commit("REMOVE_TATTOO", tattooId)
 };

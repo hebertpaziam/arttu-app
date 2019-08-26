@@ -9,7 +9,7 @@
 
 <script>
 import { mapState } from "vuex";
-import Carousel from "@/components/Carousel.vue";
+import Carousel from "@/components/Carousel";
 export default {
   name: "News",
   components: {

@@ -15,14 +15,26 @@ const state = {
 const getters = {
   getUserFirstName: ({ user }) =>
     user && user.name ? user.name.split(" ")[0] : null,
-  getAuthorization: ({ auth }) => `${auth.token_type} ${auth.access_token}`,
-  isAuthenticated: ({ auth, user }) =>
+  isSignedIn: ({ auth, user }) =>
     !!auth.access_token && !!auth.token_type && !!auth.scope && !!user.name
 };
 
 const mutations = {
-  SET_AUTH_DATA: (state, auth) => (state.auth = auth),
-  SET_USER: (state, user) => (state.user = user)
+  SIGN_IN: (state, { auth, user }) => {
+    state.auth = auth;
+    state.user = user;
+  },
+  SIGN_OUT: state => {
+    state.auth = {
+      access_token: null,
+      token_type: null,
+      scope: null
+    };
+    state.user = {
+      avatar_url: "",
+      name: ""
+    };
+  }
 };
 
 const actions = {
@@ -45,34 +57,36 @@ const actions = {
         if (data.error) throw data.error;
         return data;
       })
-      .then(data => dispatch("setAuthData", data))
-      .then(() => dispatch("setUser"))
+      .then(auth => dispatch("signIn", auth))
       .catch(err => {
         if (err === "bad_verification_code") dispatch("requestAuthorization");
       });
   },
 
-  setAuthData: ({ commit }, data) => {
-    localStorage.setItem("data-token", JSON.stringify(data));
-    commit("SET_AUTH_DATA", data);
-  },
+  signIn: ({ commit, getters, dispatch }, auth) => {
+    auth = auth || JSON.parse(localStorage.getItem("data-token"));
 
-  setUser: ({ commit, getters, dispatch }) => {
-    const dataToken = JSON.parse(localStorage.getItem("data-token"));
-    if (dataToken && !getters.isAuthenticated) {
-      dispatch("setAuthData", dataToken);
+    if (auth && !getters.isSignedIn) {
       const url = `${process.env.VUE_APP_GITHUB_API}/user`;
       const config = {
         headers: {
           Accept: "application/json;charset=UTF-8",
-          Authorization: getters.getAuthorization
+          Authorization: `${auth.token_type} ${auth.access_token}`
         }
       };
 
       Axios.get(url, config)
         .then(res => res.data)
-        .then(user => commit("SET_USER", user));
+        .then(user => {
+          localStorage.setItem("data-token", JSON.stringify(auth));
+          commit("SIGN_IN", { auth, user });
+        })
+        .catch(() => dispatch("requestAuthorization"));
     }
+  },
+  signOut: ({ commit }) => {
+    localStorage.removeItem("data-token");
+    commit("SIGN_OUT");
   }
 };
 

@@ -4,14 +4,16 @@
     <News />
     <WeAre />
     <Footer />
+    <UploadTattoo />
   </div>
 </template>
 
 <script>
-import Footer from "@/components/Footer.vue";
-import MainBanner from "@/components/MainBanner.vue";
-import News from "@/components/News.vue";
-import WeAre from "@/components/WeAre.vue";
+import Footer from "@/components/Footer";
+import MainBanner from "@/components/MainBanner";
+import News from "@/components/News";
+import UploadTattoo from "@/components/UploadTattoo";
+import WeAre from "@/components/WeAre";
 
 export default {
   name: "Home",
@@ -19,8 +21,9 @@ export default {
     Footer,
     MainBanner,
     News,
+    UploadTattoo,
     WeAre
-  },
+  }
 };
 </script>
 

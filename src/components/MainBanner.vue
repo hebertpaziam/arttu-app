@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import Menu from "@/components/Menu.vue";
+import Menu from "@/components/Menu";
 
 export default {
   name: "MainBanner",
