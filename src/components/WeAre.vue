@@ -1,11 +1,11 @@
 <template>
   <div class="component-we-are">
     <div class="content">
-      <h2 class="title">{{title}}</h2>
-      <div class="desc">{{desc}}</div>
+      <h2 class="title">{{ title }}</h2>
+      <div class="desc">{{ desc }}</div>
     </div>
     <ul class="cities">
-      <li v-for="city in cities" :key="city">{{city}}</li>
+      <li v-for="city in cities" :key="city">{{ city }}</li>
     </ul>
   </div>
 </template>
@@ -23,7 +23,7 @@ export default {
 };
 </script>
 
-<style  lang="scss" >
+<style lang="scss">
 .component-we-are {
   position: relative;
   display: flex;
