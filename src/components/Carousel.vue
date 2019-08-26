@@ -1,9 +1,9 @@
 <template>
-  <div v-if="collection && collection.length" class="component-carousel">
+  <div class="component-carousel" v-if="collection && collection.length">
     <flickity ref="flickity" :options="flickityOptions">
-      <div v-for="item in collection" :key="item.id" class="carousel-cell">
+      <div class="carousel-cell" v-for="item in collection" :key="item.id">
         <div class="content" :style="{ backgroundImage: `url(${item.src})` }">
-          <span class="desc" :title="item.desc">{{ item.desc }}</span>
+          <span class="desc" :title="item.desc">{{item.desc}}</span>
         </div>
       </div>
     </flickity>
@@ -19,10 +19,7 @@ export default {
     Flickity
   },
   props: {
-    collection: {
-      type: Array,
-      default: new Array()
-    }
+    collection: Array
   },
   data() {
     return {
@@ -37,12 +34,12 @@ export default {
     };
   },
   updated() {
-    this.$refs.flickity.rerender();
+   this.$refs.flickity.rerender();
   }
 };
 </script>
 
-<style lang="scss">
+<style  lang="scss" >
 .component-carousel {
   .flickity-enabled {
     max-width: 1200px;

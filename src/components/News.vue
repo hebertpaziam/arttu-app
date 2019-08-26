@@ -1,7 +1,7 @@
 <template>
   <div class="component-news">
     <div class="bg-pattern">
-      <h2 class="title">{{ title }}</h2>
+      <h2 class="title">{{title}}</h2>
     </div>
     <Carousel :collection="tattoos" />
   </div>
@@ -26,7 +26,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" >
 .component-news {
   padding: 40px 0px;
 

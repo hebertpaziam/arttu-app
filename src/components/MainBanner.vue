@@ -2,7 +2,7 @@
   <div class="component-main-banner">
     <Menu></Menu>
     <img class="logo" :src="logo" />
-    <h1 class="title">{{ title }}</h1>
+    <h1 class="title">{{title}}</h1>
   </div>
 </template>
 
@@ -23,7 +23,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" >
 .component-main-banner {
   position: relative;
   display: flex;
