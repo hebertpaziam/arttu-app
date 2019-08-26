@@ -5,16 +5,28 @@
       <dl class="block">
         <dt class="header">Legal</dt>
         <dd class="item">
-          <a href="javascript:;" target="_blank" rel="noopener noreferrer">Politicas de Uso</a>
+          <a
+            href="https://arttu.co/politicas"
+            target="_blank"
+            rel="noopener noreferrer"
+          >Politicas de Uso</a>
         </dd>
         <dd class="item">
-          <a href="javascript:;" target="_blank" rel="noopener noreferrer">Politicas de Privacidade</a>
+          <a
+            href="https://arttu.co/privacidade"
+            target="_blank"
+            rel="noopener noreferrer"
+          >Politicas de Privacidade</a>
         </dd>
         <dd class="item">
-          <a href="javascript:;" target="_blank" rel="noopener noreferrer">Politicas de Cookies</a>
+          <a
+            href="https://arttu.co/politicas"
+            target="_blank"
+            rel="noopener noreferrer"
+          >Politicas de Cookies</a>
         </dd>
         <dd class="item">
-          <a href="javascript:;" target="_blank" rel="noopener noreferrer">Copyright</a>
+          <a href="https://arttu.co/copy" target="_blank" rel="noopener noreferrer">Copyright</a>
         </dd>
       </dl>
 
@@ -41,7 +53,7 @@
       <dl class="block -small">
         <dt class="header">Arttu</dt>
         <dd class="item">
-          <a href="javascript:;" target="_blank" rel="noopener noreferrer">Quem Somos</a>
+          <a href="https://arttu.co/sobre" target="_blank" rel="noopener noreferrer">Quem Somos</a>
         </dd>
         <dd class="item">
           <a href="javascript:;" target="_blank" rel="noopener noreferrer">FAQ</a>
@@ -51,10 +63,20 @@
       <dl class="block">
         <dt class="header">Social</dt>
         <dd class="item">
-          <a class="social-brand" href="javascript:;" target="_blank" rel="noopener noreferrer">
+          <a
+            class="social-brand"
+            href="https://facebook.com/therealarttu/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <fa-icon :icon="['fab', 'facebook-f']" />
           </a>
-          <a class="social-brand" href="javascript:;" target="_blank" rel="noopener noreferrer">
+          <a
+            class="social-brand"
+            href="https://www.instagram.com/therealarttu/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <fa-icon :icon="['fab', 'instagram']" />
           </a>
         </dd>
@@ -74,10 +96,7 @@ export default {
 
 <style  lang="scss" >
 .component-footer {
-  display: flex;
-  flex-flow: column;
-  align-items: center;
-  justify-content: center;
+  @include display-flex(nowrap, column, center, center);
   color: #fff;
   background-color: #000;
 
@@ -96,16 +115,11 @@ export default {
     width: 95%;
     height: 20px;
     margin: 40px auto 20px auto;
-    background: radial-gradient(circle at center, #999 15%, transparent 15%),
-      transparent;
-    background-size: 10px;
+    @include bg-pattern(#999, 15%, 15%, 10px);
   }
 
   > .content {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    justify-content: space-around;
+    @include display-flex(wrap, row, flex-start, space-around);
     width: 100%;
     max-width: 1366px;
     margin: auto auto 50px auto;
@@ -137,8 +151,8 @@ export default {
         }
 
         form {
-          display: flex;
-          flex-wrap: wrap;
+          @include display-flex(wrap, row, flex-start, flex-start);
+
           > .field,
           > .action {
             width: 100%;
@@ -160,15 +174,7 @@ export default {
             }
           }
           > .action {
-            padding: 4px 20.8px;
-            color: #000;
-            font-size: 1.1rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            background-color: $primary-color;
-            &:hover {
-              background-color: $primary-color-lighten;
-            }
+            @include btn-config($primary-color);
           }
         }
 

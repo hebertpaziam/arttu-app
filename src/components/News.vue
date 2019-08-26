@@ -35,9 +35,7 @@ export default {
     max-width: 1200px;
     margin: auto;
     text-align: center;
-    background: radial-gradient(circle at center, #888 20%, transparent 22%),
-      #ffffff;
-    background-size: 25px;
+    @include bg-pattern(#888, 20%, 22%, 25px);
 
     > .title {
       display: inline-block;

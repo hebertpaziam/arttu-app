@@ -1,6 +1,7 @@
 <template>
   <div class="view-auth"></div>
 </template>
+
 <script>
 import { mapActions } from "vuex";
 export default {
@@ -17,5 +18,5 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
 </style>

@@ -25,17 +25,13 @@ export default {
 
 <style lang="scss" >
 .component-main-banner {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
+  @include display-flex(nowrap, column, center, flex-start);
   height: 100vh;
 
-  background-color: #f0e2e1;
   background-size: contain;
-  background-position: center 90%;
+  background-color: #f0e2e1;
   background-repeat: no-repeat;
+  background-position: center 90%;
   background-image: url("/images/backgrounds/rock-paper-scissors.png");
 
   > .component-menu {

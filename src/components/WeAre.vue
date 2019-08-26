@@ -25,18 +25,12 @@ export default {
 
 <style  lang="scss" >
 .component-we-are {
-  position: relative;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  justify-content: space-around;
+  @include display-flex(wrap, row, flex-start, space-around);
   min-height: 320px;
   padding: 150px 30px 30px 30px;
   opacity: 1;
   z-index: 1;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  @include bg-cover-center;
   background-image: url("/images/backgrounds/tattoo-machine.jpg");
 
   > .content,
@@ -68,26 +62,16 @@ export default {
         content: "";
         display: block;
         height: 20px;
-        background: radial-gradient(
-            circle at center,
-            $feature-color 15%,
-            transparent 15%
-          ),
-          transparent;
-        background-size: 10px;
+        @include bg-pattern($feature-color, 15%, 15%, 10px);
       }
     }
   }
 
   &::before {
     content: "";
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
+    @include absolute-fulled-up;
     opacity: 0.6;
-    background-color: darken($primary-color-lighten, 25%);
+    background-color: darken($primary-color, 25%);
     z-index: -1;
   }
 }

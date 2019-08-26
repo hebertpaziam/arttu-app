@@ -34,7 +34,7 @@ export default {
     };
   },
   updated() {
-   this.$refs.flickity.rerender();
+    this.$refs.flickity.rerender();
   }
 };
 </script>
@@ -60,17 +60,11 @@ export default {
   }
   .carousel-cell {
     > .content {
-      position: relative;
-      display: flex;
-      align-items: flex-start;
-      justify-content: center;
-
+      @include display-flex(wrap, row, flex-start, center);
       width: 380px;
       height: 390px;
       margin: auto 10px;
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
+      @include bg-cover-center;
 
       > .desc {
         position: relative;
@@ -80,22 +74,13 @@ export default {
         font-weight: 700;
         font-size: 1.4rem;
         text-align: left;
-
-        text-transform: uppercase;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        overflow: hidden;
-
         opacity: 1;
         z-index: 1;
+        @include whitespace-nowrap;
 
         &::before {
           content: "";
-          position: absolute;
-          width: 100%;
-          height: 100%;
-          top: 0;
-          left: 0;
+          @include absolute-fulled-up;
           opacity: 0.5;
           background-color: $feature-color;
           z-index: -1;

@@ -1,0 +1,57 @@
+@mixin absolute-fulled-up {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+@mixin bg-cover-center {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+@mixin bg-pattern($color, $percent-color, $percent-transparent, $size) {
+  background: radial-gradient(
+      circle at center,
+      $color $percent-color,
+      transparent $percent-transparent
+    ),
+    transparent;
+  background-size: $size;
+}
+
+@mixin btn-config($color) {
+  line-height: 21px;
+  margin: 5px auto;
+  padding: 4px 20.8px;
+  color: #000;
+  background-color: $color;
+  font-weight: 700;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 30px;
+  transition: all 150ms ease-in-out;
+
+  &:hover {
+    background-color: lighten($color, 7.5%);
+  }
+}
+
+@mixin whitespace-nowrap {
+  text-transform: uppercase;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+@mixin display-flex($wrap, $direction, $align, $justify) {
+  position: relative;
+  display: flex;
+  flex-wrap: $wrap;
+  flex-direction: $direction;
+  align-items: $align;
+  justify-content: $justify;
+}
