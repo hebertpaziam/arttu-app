@@ -5,6 +5,7 @@ import store from "./store/index";
 import App from "./App";
 
 import "./font-awesome";
+import "./firebase";
 
 Vue.config.productionTip = false;
 

@@ -6,14 +6,13 @@
 
 <script>
 import { mapActions } from "vuex";
-
 export default {
   name: "AppRoot",
   mounted() {
-    this.signIn();
+    this.listenAuthStateChanged();
   },
   methods: {
-    ...mapActions("AuthModule", ["signIn"])
+    ...mapActions("AuthModule", ["listenAuthStateChanged"])
   }
 };
 </script>

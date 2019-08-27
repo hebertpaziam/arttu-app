@@ -1,6 +1,6 @@
   <template>
   <div class="component-menu">
-    <button type="button" class="sign-in" v-if="!isSignedIn" @click="requestAuthorization">
+    <button type="button" class="sign-in" v-if="!isSignedIn" @click="signInWithGithub">
       <fa-icon class="icon" :icon="['fab', 'github']" />Entre
     </button>
 
@@ -8,7 +8,7 @@
       <button type="button" class="menu-trigger" @click="toggleMenu">
         <div class="avatar">
           <fa-icon icon="user-circle" class="icon" />
-          <span class="picture" :style="{backgroundImage: `url(${user.avatar_url})`}"></span>
+          <span class="picture" :style="{backgroundImage: `url(${getUserAvatar})`}"></span>
         </div>
 
         <div class="greetings">
@@ -17,8 +17,8 @@
           <fa-icon class="icon" icon="caret-down" v-else />
         </div>
       </button>
-      <div class="content">
-        <button type="button" class="action" @click="toggleModal">
+      <div class="content" @click.capture="toggleMenu">
+        <button type="button" class="action">
           <fa-icon icon="upload" class="icon" />Upload
         </button>
         <button type="button" class="action" @click="signOut">
@@ -30,22 +30,25 @@
 </template>
 
   <script>
-import { mapState, mapActions, mapGetters } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 export default {
   name: "Menu",
   data: () => ({
     menuOpened: false
   }),
   computed: {
-    ...mapState("AuthModule", ["user"]),
-    ...mapGetters("AuthModule", ["isSignedIn", "getUserFirstName"])
+    ...mapGetters("AuthModule", [
+      "isSignedIn",
+      "getUserFirstName",
+      "getUserAvatar"
+    ])
   },
   methods: {
     toggleMenu() {
       this.menuOpened = !this.menuOpened;
     },
     ...mapActions("TattooModule", ["toggleModal"]),
-    ...mapActions("AuthModule", ["requestAuthorization", "signOut"])
+    ...mapActions("AuthModule", ["signInWithGithub", "signOut"])
   }
 };
 </script>
