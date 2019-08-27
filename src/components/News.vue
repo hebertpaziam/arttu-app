@@ -45,6 +45,10 @@ export default {
       font-size: 2rem;
       background-color: #ffffff;
     }
+    @media only screen and (max-width: 1024px) {
+      max-width: 1080px;
+      background-size: 25.7px;
+    }
   }
   > .component-carousel {
     margin-top: 40px;

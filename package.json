@@ -58,7 +58,8 @@
     }
   },
   "gitHooks": {
-    "pre-commit": "lint-staged"
+    "pre-commit": "lint-staged",
+    "pre-push": "npm run deploy"
   },
   "browserslist": [
     "> 1%",

@@ -119,18 +119,16 @@ export default {
   }
 
   > .content {
-    @include display-flex(wrap, row, flex-start, space-around);
+    @include display-flex(wrap, row, flex-start, space-between);
     width: 100%;
     max-width: 1366px;
     margin: auto auto 50px auto;
 
-    @media only screen and (max-width: 1200px) {
-      width: 360px;
-    }
-
     > .block {
       display: inline-block;
-      width: 250px;
+      width: auto;
+      max-width: 250px;
+      min-width: 173px;
       font-size: 1.3rem;
       margin: 20px;
       &.-small {
@@ -191,6 +189,15 @@ export default {
           border-radius: 50%;
           background-color: #ddd;
         }
+      }
+    }
+
+    @media only screen and (max-width: 1200px) {
+      width: 360px;
+      justify-content: center;
+      > .block {
+        text-align: center;
+        width: 100%;
       }
     }
   }

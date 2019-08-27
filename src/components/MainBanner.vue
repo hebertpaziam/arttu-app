@@ -44,16 +44,22 @@ export default {
     width: 206.5px;
     height: auto;
     margin: 30px auto;
-
-    @media screen and (max-width: 900px) {
-      margin: 70px auto 30px auto;
-    }
   }
 
   > .title {
     width: 80%;
     max-width: 650px;
     text-align: center;
+  }
+
+  @media screen and (max-width: 900px) {
+    > .component-menu {
+      top: 15px;
+      right: 15px;
+    }
+    > .logo {
+      margin: 70px auto 30px auto;
+    }
   }
 }
 </style>

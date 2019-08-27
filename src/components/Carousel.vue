@@ -44,12 +44,16 @@ export default {
   .flickity-enabled {
     max-width: 1200px;
     margin: auto;
+    @media only screen and (max-width: 1024px) {
+      max-width: 1080px;
+    }
   }
   .flickity-prev-next-button {
-    background: none;
-    @media only screen and (min-width: 1200px) {
+    background: hsla(0, 0%, 100%, 0.3);
+    @media only screen and (min-width: 1366px) {
       width: 100px;
       height: 100px;
+      background: none;
       &.next {
         transform: translate(120px, -50%);
       }
@@ -85,6 +89,12 @@ export default {
           background-color: $feature-color;
           z-index: -1;
         }
+      }
+
+      @media only screen and (max-width: 1024px) {
+        width: 342px;
+        height: 351px;
+        margin: auto 9px;
       }
     }
   }
