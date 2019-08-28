@@ -1,26 +1,26 @@
 <template>
   <div class="component-we-are">
     <div class="content">
-      <h2 class="title">{{title}}</h2>
-      <div class="desc">{{desc}}</div>
+      <h2 class="title">{{ title }}</h2>
+      <div class="desc">{{ desc }}</div>
     </div>
     <ul class="cities">
-      <li v-for="city in cities" :key="city">{{city}}</li>
+      <li v-for="city in cities" :key="city">{{ city }}</li>
     </ul>
   </div>
 </template>
 
 <script>
 export default {
-  name: "WeAre",
+  name: 'WeAre',
   data() {
     return {
-      title: "Estamos no Brasil e em Portugal!",
-      desc: "Escontre sua tattoo pela cidade que deseja também :)",
-      cities: ["RIO DE JANEIRO", "AVEIRO", "BRAGA", "PORTO"]
-    };
+      title: 'Estamos no Brasil e em Portugal!',
+      desc: 'Escontre sua tattoo pela cidade que deseja também :)',
+      cities: ['RIO DE JANEIRO', 'AVEIRO', 'BRAGA', 'PORTO']
+    }
   }
-};
+}
 </script>
 
 <style  lang="scss" >
@@ -31,7 +31,7 @@ export default {
   opacity: 1;
   z-index: 1;
   @include bg-cover-center;
-  background-image: url("/images/backgrounds/tattoo-machine.jpg");
+  background-image: url('/images/backgrounds/tattoo-machine.jpg');
 
   > .content,
   > .cities {
@@ -59,7 +59,7 @@ export default {
     > li {
       margin: 20px 0px;
       &:after {
-        content: "";
+        content: '';
         display: block;
         height: 20px;
         @include bg-pattern($feature-color, 15%, 15%, 10px);
@@ -68,7 +68,7 @@ export default {
   }
 
   &::before {
-    content: "";
+    content: '';
     @include absolute-fulled-up;
     opacity: 0.6;
     background-color: darken($primary-color, 25%);

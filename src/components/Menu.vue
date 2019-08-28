@@ -1,20 +1,20 @@
-  <template>
+<template>
   <div class="component-menu">
-    <button type="button" class="sign-in" v-if="!isSignedIn" @click="signInWithGithub">
+    <button v-if="!isSignedIn" type="button" class="sign-in" @click="signInWithGithub">
       <fa-icon class="icon" :icon="['fab', 'github']" />Entre
     </button>
 
-    <div class="authenticated" :class="{'-menu-opened': menuOpened === true}" v-else>
+    <div v-else class="authenticated" :class="{'-menu-opened': menuOpened === true}">
       <button type="button" class="menu-trigger" @click="toggleMenu">
         <div class="avatar">
           <fa-icon icon="user-circle" class="icon" />
-          <span class="picture" :style="{backgroundImage: `url(${getUserAvatar})`}"></span>
+          <span class="picture" :style="{backgroundImage: `url(${getUserAvatar})`}" />
         </div>
 
         <div class="greetings">
           <span class="username" :title="getUserFirstName">Olá, {{ getUserFirstName }}</span>
-          <fa-icon class="icon" icon="caret-up" v-if="menuOpened" />
-          <fa-icon class="icon" icon="caret-down" v-else />
+          <fa-icon v-if="menuOpened" class="icon" icon="caret-up" />
+          <fa-icon v-else class="icon" icon="caret-down" />
         </div>
       </button>
       <div class="content" @click.capture="toggleMenu">
@@ -29,28 +29,28 @@
   </div>
 </template>
 
-  <script>
-import { mapActions, mapGetters } from "vuex";
+<script>
+import { mapActions, mapGetters } from 'vuex'
 export default {
-  name: "Menu",
+  name: 'Menu',
   data: () => ({
     menuOpened: false
   }),
   computed: {
-    ...mapGetters("AuthModule", [
-      "isSignedIn",
-      "getUserFirstName",
-      "getUserAvatar"
+    ...mapGetters('AuthModule', [
+      'isSignedIn',
+      'getUserFirstName',
+      'getUserAvatar'
     ])
   },
   methods: {
     toggleMenu() {
-      this.menuOpened = !this.menuOpened;
+      this.menuOpened = !this.menuOpened
     },
-    ...mapActions("TattooModule", ["toggleModal"]),
-    ...mapActions("AuthModule", ["signInWithGithub", "signOut"])
+    ...mapActions('TattooModule', ['toggleModal']),
+    ...mapActions('AuthModule', ['signInWithGithub', 'signOut'])
   }
-};
+}
 </script>
 
   <style lang="scss">

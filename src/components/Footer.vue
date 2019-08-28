@@ -84,14 +84,14 @@
     </div>
 
     <div class="copyright">&copy; 2019 Arttu</div>
-    <div class="bg-pattern"></div>
+    <div class="bg-pattern" />
   </div>
 </template>
 
 <script>
 export default {
-  name: "Footer"
-};
+  name: 'Footer'
+}
 </script>
 
 <style  lang="scss" >

@@ -1,26 +1,26 @@
 <template>
   <div class="component-main-banner">
-    <Menu></Menu>
+    <Menu />
     <img class="logo" :src="logo" />
-    <h1 class="title">{{title}}</h1>
+    <h1 class="title">{{ title }}</h1>
   </div>
 </template>
 
 <script>
-import Menu from "@/components/Menu";
+import Menu from '@/components/Menu'
 
 export default {
-  name: "MainBanner",
+  name: 'MainBanner',
   components: {
     Menu
   },
   data() {
     return {
-      logo: "/images/logos/logo_full-black.png",
-      title: "FAZER SUA TATUAGEM NUNCA FOI TÃO SIMPLES!"
-    };
+      logo: '/images/logos/logo_full-black.png',
+      title: 'FAZER SUA TATUAGEM NUNCA FOI TÃO SIMPLES!'
+    }
   }
-};
+}
 </script>
 
 <style lang="scss" >
@@ -32,7 +32,7 @@ export default {
   background-color: #f0e2e1;
   background-repeat: no-repeat;
   background-position: center 90%;
-  background-image: url("/images/backgrounds/rock-paper-scissors.png");
+  background-image: url('/images/backgrounds/rock-paper-scissors.png');
 
   > .component-menu {
     position: absolute;

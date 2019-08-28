@@ -1,9 +1,9 @@
 <template>
-  <div class="component-carousel" v-if="collection && collection.length">
+  <div v-if="collection && collection.length" class="component-carousel">
     <flickity ref="flickity" :options="flickityOptions">
-      <div class="carousel-cell" v-for="item in collection" :key="item.id">
+      <div v-for="item in collection" :key="item.id" class="carousel-cell">
         <div class="content" :style="{ backgroundImage: `url(${item.src})` }">
-          <span class="desc" :title="item.desc">{{item.desc}}</span>
+          <span class="desc" :title="item.desc">{{ item.desc }}</span>
         </div>
       </div>
     </flickity>
@@ -11,32 +11,35 @@
 </template>
 
 <script>
-import Flickity from "vue-flickity";
+import Flickity from 'vue-flickity'
 
 export default {
-  name: "Carousel",
+  name: 'Carousel',
   components: {
     Flickity
   },
   props: {
-    collection: Array
+    collection: {
+      type: Array,
+      default: () => []
+    }
   },
   data() {
     return {
       flickityOptions: {
         autoPlay: 3000,
-        cellAlign: "center",
+        cellAlign: 'center',
         contain: true,
         groupCells: true,
         pauseAutoPlayOnHover: false,
         wrapAround: true
       }
-    };
+    }
   },
   updated() {
-    this.$refs.flickity.rerender();
+    this.$refs.flickity.rerender()
   }
-};
+}
 </script>
 
 <style  lang="scss" >
@@ -83,7 +86,7 @@ export default {
         @include whitespace-nowrap;
 
         &::before {
-          content: "";
+          content: '';
           @include absolute-fulled-up;
           opacity: 0.5;
           background-color: $feature-color;

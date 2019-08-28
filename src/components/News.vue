@@ -1,29 +1,29 @@
 <template>
   <div class="component-news">
     <div class="bg-pattern">
-      <h2 class="title">{{title}}</h2>
+      <h2 class="title">{{ title }}</h2>
     </div>
     <Carousel :collection="tattoos" />
   </div>
 </template>
 
 <script>
-import { mapState } from "vuex";
-import Carousel from "@/components/Carousel";
+import { mapState } from 'vuex'
+import Carousel from '@/components/Carousel'
 export default {
-  name: "News",
+  name: 'News',
   components: {
     Carousel
   },
   data() {
     return {
-      title: "NOVIDADES"
-    };
+      title: 'NOVIDADES'
+    }
   },
   computed: {
-    ...mapState("TattooModule", ["tattoos"])
+    ...mapState('TattooModule', ['tattoos'])
   }
-};
+}
 </script>
 
 <style lang="scss" >

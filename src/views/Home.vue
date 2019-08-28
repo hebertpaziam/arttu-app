@@ -9,14 +9,14 @@
 </template>
 
 <script>
-import Footer from "@/components/Footer";
-import MainBanner from "@/components/MainBanner";
-import News from "@/components/News";
-import UploadTattoo from "@/components/UploadTattoo";
-import WeAre from "@/components/WeAre";
+import Footer from '@/components/Footer'
+import MainBanner from '@/components/MainBanner'
+import News from '@/components/News'
+import UploadTattoo from '@/components/UploadTattoo'
+import WeAre from '@/components/WeAre'
 
 export default {
-  name: "Home",
+  name: 'Home',
   components: {
     Footer,
     MainBanner,
@@ -24,7 +24,7 @@ export default {
     UploadTattoo,
     WeAre
   }
-};
+}
 </script>
 
 <style lang="scss">

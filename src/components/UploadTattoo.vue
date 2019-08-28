@@ -1,17 +1,17 @@
 <template>
-  <div class="component-upload" v-show="isModalOpened">
-    <div class="modal"></div>
+  <div v-show="isModalOpened" class="component-upload">
+    <div class="modal" />
   </div>
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters } from 'vuex'
 export default {
-  name: "UploadTattoo",
+  name: 'UploadTattoo',
   computed: {
-    ...mapGetters("TattooModule", ['isModalOpened'])
+    ...mapGetters('TattooModule', ['isModalOpened'])
   }
-};
+}
 </script>
 
 <style lang="scss">
@@ -26,7 +26,7 @@ export default {
   // visibility: hidden;
 
   &::before {
-    content: "";
+    content: '';
     @include backdrop-props;
   }
   > .modal {

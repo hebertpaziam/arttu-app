@@ -5,18 +5,18 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapActions } from 'vuex'
 export default {
-  name: "AppRoot",
+  name: 'AppRoot',
   mounted() {
-    this.listenAuthStateChanged();
+    this.listenAuthStateChanged()
   },
   methods: {
-    ...mapActions("AuthModule", ["listenAuthStateChanged"])
+    ...mapActions('AuthModule', ['listenAuthStateChanged'])
   }
-};
+}
 </script>
 
 <style lang="scss">
-@import "~@/assets/style/main.scss";
+@import '~@/assets/style/main.scss';
 </style>
