@@ -37,21 +37,8 @@ describe('News.vue', () => {
   })
 
   it('When no tattoos is requested', () => {
-    const wrapper = shallowMount(News, {
-      store: new Vuex.Store({
-        modules: {
-          TattooModule: {
-            ...TattooModule,
-            actions: { bindTattoos: jest.fn() },
-            state: {
-              tattoos: []
-            }
-          }
-        }
-      }),
-      localVue
-    })
-    expect(wrapper.find('.component-news').exists()).toBeFalsy()
+    const wrapper = shallowMount(News, { store, localVue })
+    expect(wrapper.find('.component-news').exists()).toBeTruthy()
   })
 
   it('When title is passed', () => {
