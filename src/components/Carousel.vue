@@ -11,13 +11,8 @@
 </template>
 
 <script>
-import Flickity from 'vue-flickity'
-
 export default {
   name: 'Carousel',
-  components: {
-    Flickity
-  },
   props: {
     collection: {
       type: Array,

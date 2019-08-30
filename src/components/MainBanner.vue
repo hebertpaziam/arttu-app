@@ -14,10 +14,14 @@ export default {
   components: {
     Menu
   },
-  data() {
-    return {
-      logo: '/images/logos/logo_full-black.png',
-      title: 'FAZER SUA TATUAGEM NUNCA FOI TÃO SIMPLES!'
+  props: {
+    title: {
+      type: String,
+      default: () => ''
+    },
+    logo: {
+      type: String,
+      default: () => ''
     }
   }
 }

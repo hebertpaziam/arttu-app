@@ -4,8 +4,9 @@ import store from './store/index'
 
 import App from './App'
 
-import './font-awesome'
 import './firebase'
+import './flickity'
+import './font-awesome'
 
 Vue.config.productionTip = false
 

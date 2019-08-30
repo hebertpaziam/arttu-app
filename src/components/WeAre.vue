@@ -13,11 +13,18 @@
 <script>
 export default {
   name: 'WeAre',
-  data() {
-    return {
-      title: 'Estamos no Brasil e em Portugal!',
-      desc: 'Escontre sua tattoo pela cidade que deseja também :)',
-      cities: ['RIO DE JANEIRO', 'AVEIRO', 'BRAGA', 'PORTO']
+  props: {
+    title: {
+      type: String,
+      default: () => ''
+    },
+    desc: {
+      type: String,
+      default: () => ''
+    },
+    cities: {
+      type: Array,
+      default: () => []
     }
   }
 }

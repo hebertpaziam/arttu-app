@@ -15,9 +15,10 @@ export default {
   components: {
     Carousel
   },
-  data() {
-    return {
-      title: 'NOVIDADES'
+  props: {
+    title: {
+      type: String,
+      default: () => ''
     }
   },
   computed: {

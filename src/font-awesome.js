@@ -16,7 +16,7 @@ import {
   faUpload
 } from '@fortawesome/free-solid-svg-icons'
 
-export default {}
 library.add(faUserCircle, faCaretUp, faCaretDown, faSignOutAlt, faUpload)
 library.add(faFacebookF, faInstagram, faGithub)
-Vue.component('fa-icon', FontAwesomeIcon)
+
+export default Vue.component('FontAwesomeIcon', FontAwesomeIcon)

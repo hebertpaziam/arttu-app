@@ -1,28 +1,28 @@
 <template>
   <div class="component-menu">
     <button v-if="!isSignedIn" type="button" class="sign-in" @click="signInWithGithub">
-      <fa-icon class="icon" :icon="['fab', 'github']" />Entre
+      <FontAwesomeIcon class="icon" :icon="['fab', 'github']" />Entre
     </button>
 
     <div v-else class="authenticated" :class="{'-menu-opened': menuOpened === true}">
       <button type="button" class="menu-trigger" @click="toggleMenu">
         <div class="avatar">
-          <fa-icon icon="user-circle" class="icon" />
+          <FontAwesomeIcon icon="user-circle" class="icon" />
           <span class="picture" :style="{backgroundImage: `url(${getUserAvatar})`}" />
         </div>
 
         <div class="greetings">
           <span class="username" :title="getUserFirstName">Olá, {{ getUserFirstName }}</span>
-          <fa-icon v-if="menuOpened" class="icon" icon="caret-up" />
-          <fa-icon v-else class="icon" icon="caret-down" />
+          <FontAwesomeIcon v-if="menuOpened" class="icon" icon="caret-up" />
+          <FontAwesomeIcon v-else class="icon" icon="caret-down" />
         </div>
       </button>
       <div class="content" @click.capture="toggleMenu">
         <button type="button" class="action">
-          <fa-icon icon="upload" class="icon" />Upload
+          <FontAwesomeIcon icon="upload" class="icon" />Upload
         </button>
         <button type="button" class="action" @click="signOut">
-          <fa-icon icon="sign-out-alt" class="icon" />Sair
+          <FontAwesomeIcon icon="sign-out-alt" class="icon" />Sair
         </button>
       </div>
     </div>
@@ -30,9 +30,13 @@
 </template>
 
 <script>
+import FontAwesomeIcon from '@/font-awesome'
 import { mapActions, mapGetters } from 'vuex'
 export default {
   name: 'Menu',
+  components: {
+    FontAwesomeIcon
+  },
   data: () => ({
     menuOpened: false
   }),

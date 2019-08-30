@@ -69,7 +69,7 @@
             target="_blank"
             rel="noopener noreferrer"
           >
-            <fa-icon :icon="['fab', 'facebook-f']" />
+            <FontAwesomeIcon :icon="['fab', 'facebook-f']" />
           </a>
           <a
             class="social-brand"
@@ -77,7 +77,7 @@
             target="_blank"
             rel="noopener noreferrer"
           >
-            <fa-icon :icon="['fab', 'instagram']" />
+            <FontAwesomeIcon :icon="['fab', 'instagram']" />
           </a>
         </dd>
       </dl>
@@ -89,8 +89,12 @@
 </template>
 
 <script>
+import FontAwesomeIcon from '@/font-awesome'
 export default {
-  name: 'Footer'
+  name: 'Footer',
+  components: {
+    FontAwesomeIcon
+  }
 }
 </script>
 
