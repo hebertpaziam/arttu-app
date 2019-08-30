@@ -14,4 +14,4 @@ const firebaseConfig = {
   storageBucket: process.env.VUE_APP_FIREBASE_STORAGE_BUCKET
 }
 
-firebase.initializeApp(firebaseConfig)
+export default firebase.initializeApp(firebaseConfig)

@@ -14,7 +14,19 @@ describe('News.vue', () => {
   beforeEach(() => {
     store = new Vuex.Store({
       modules: {
-        TattooModule: { ...TattooModule }
+        TattooModule: {
+          ...TattooModule,
+          actions: { bindTattoos: jest.fn() },
+          state: {
+            tattoos: [
+              {
+                id: 1,
+                src: 'tattoo-1.jpg',
+                desc: 'tattoo 1'
+              }
+            ]
+          }
+        }
       }
     })
   })
@@ -22,6 +34,24 @@ describe('News.vue', () => {
   it('News is a vue instance', () => {
     const wrapper = shallowMount(News, { store, localVue })
     expect(wrapper.isVueInstance()).toBeTruthy()
+  })
+
+  it('When no tattoos is requested', () => {
+    const wrapper = shallowMount(News, {
+      store: new Vuex.Store({
+        modules: {
+          TattooModule: {
+            ...TattooModule,
+            actions: { bindTattoos: jest.fn() },
+            state: {
+              tattoos: []
+            }
+          }
+        }
+      }),
+      localVue
+    })
+    expect(wrapper.find('.component-news').exists()).toBeFalsy()
   })
 
   it('When title is passed', () => {

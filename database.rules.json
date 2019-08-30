@@ -1,8 +1,8 @@
 {
   "rules": {
+    ".read": true,
     "tattoos": {
-      ".write": "auth != null",
-      ".read": true
+      ".write": "auth != null"
     }
   }
 }

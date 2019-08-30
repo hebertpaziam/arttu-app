@@ -1,5 +1,5 @@
 <template>
-  <div class="component-news">
+  <div v-if="tattoos && tattoos.length" class="component-news">
     <div class="bg-pattern">
       <h2 class="title">{{ title }}</h2>
     </div>
@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 import Carousel from '@/components/Carousel'
 export default {
   name: 'News',
@@ -23,6 +23,12 @@ export default {
   },
   computed: {
     ...mapState('TattooModule', ['tattoos'])
+  },
+  mounted() {
+    this.bindTattoos()
+  },
+  methods: {
+    ...mapActions('TattooModule', ['bindTattoos'])
   }
 }
 </script>
