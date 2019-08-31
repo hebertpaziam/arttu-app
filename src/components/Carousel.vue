@@ -2,8 +2,8 @@
   <div v-if="collection && collection.length" class="component-carousel">
     <flickity ref="flickity" :options="flickityOptions">
       <div v-for="item in collection" :key="item.id" class="carousel-cell">
-        <div class="content" :style="{ backgroundImage: `url(${item.src})` }">
-          <span class="desc" :title="item.desc">{{ item.desc }}</span>
+        <div class="content" :style="{ backgroundImage: `url(${item.source})` }">
+          <span class="title" :title="item.title">{{ item.title }}</span>
         </div>
       </div>
     </flickity>
@@ -68,7 +68,7 @@ export default {
       margin: auto 10px;
       @include bg-cover-center;
 
-      > .desc {
+      > .title {
         position: relative;
         width: 100%;
         padding: 16px;

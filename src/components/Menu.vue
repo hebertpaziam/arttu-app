@@ -18,9 +18,9 @@
         </div>
       </button>
       <div class="content" @click.capture="toggleMenu">
-        <button type="button" class="action">
+        <router-link to="/upload" class="action">
           <FontAwesomeIcon icon="upload" class="icon" />Upload
-        </button>
+        </router-link>
         <button type="button" class="action" @click="signOut">
           <FontAwesomeIcon icon="sign-out-alt" class="icon" />Sair
         </button>
@@ -51,7 +51,6 @@ export default {
     toggleMenu() {
       this.menuOpened = !this.menuOpened
     },
-    ...mapActions('TattooModule', ['toggleModal']),
     ...mapActions('AuthModule', ['signInWithGithub', 'signOut'])
   }
 }

@@ -15,9 +15,9 @@ describe('Carousel.vue', () => {
 
   it('When collection is passed, checking background-image', () => {
     const collectionItem = {
-      id: 1,
-      src: 'tattoo-1.jpg',
-      desc: 'tattoo 1'
+      id: 'sjPEHqQD7YgQHhoL4zJn',
+      source: 'tattoo-1.jpg',
+      title: 'tattoo 1'
     }
     const wrapper = shallowMount(Carousel, {
       propsData: {
@@ -26,12 +26,12 @@ describe('Carousel.vue', () => {
     })
     const item = wrapper.findAll('.carousel-cell').at(0)
     expect(item.exists()).toBeTruthy()
-    expect(item.find('.desc').text()).toEqual(collectionItem.desc)
-    expect(item.find('.desc').element.getAttribute('title')).toEqual(
-      collectionItem.desc
+    expect(item.find('.title').text()).toEqual(collectionItem.title)
+    expect(item.find('.title').element.getAttribute('title')).toEqual(
+      collectionItem.title
     )
     expect(item.find('.content').element.style.backgroundImage).toEqual(
-      `url(${collectionItem.src})`
+      `url(${collectionItem.source})`
     )
   })
 })

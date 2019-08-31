@@ -19,7 +19,7 @@ describe('Menu.vue', () => {
           ...AuthModule,
           actions: { signInWithGithub: jest.fn(), signOut: jest.fn() }
         },
-        TattooModule: { ...TattooModule, actions: { toggleModal: jest.fn() } }
+        TattooModule: { ...TattooModule }
       }
     })
   })
