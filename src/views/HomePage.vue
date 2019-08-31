@@ -1,5 +1,5 @@
 <template>
-  <div class="view-home">
+  <div class="view-home-page">
     <MainBanner
       title="FAZER SUA TATUAGEM NUNCA FOI TÃO SIMPLES!"
       logo="/images/logos/logo_full-black.png"
@@ -21,7 +21,7 @@ import News from '@/components/News'
 import WeAre from '@/components/WeAre'
 
 export default {
-  name: 'Home',
+  name: 'HomePage',
   components: {
     Footer,
     MainBanner,

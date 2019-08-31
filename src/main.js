@@ -10,6 +10,11 @@ import './font-awesome'
 
 Vue.config.productionTip = false
 
+const prevent = (e) =>
+  e.target.tagName !== 'input' ? e.preventDefault() : null
+window.addEventListener('dragover', prevent, false)
+window.addEventListener('drop', prevent, false)
+
 new Vue({
   router,
   store,

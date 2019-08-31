@@ -18,6 +18,7 @@ const mutations = {
 const actions = {
   removeTattoo: ({ commit }, tattooId) => commit('REMOVE_TATTOO', tattooId),
   uploadTattoo: (store, tattoo) => {
+    debugger
     const storageRef = storage.ref(`tattoos/${tattoo.source.name}`)
     const uploadTask = storageRef.put(tattoo.source)
     uploadTask.on('state_changed', {
