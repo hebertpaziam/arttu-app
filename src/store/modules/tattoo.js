@@ -1,4 +1,5 @@
 import firebase from '@/firebase'
+import router from '@/router'
 
 const db = firebase.firestore()
 const storage = firebase.storage()
@@ -18,20 +19,23 @@ const mutations = {
 const actions = {
   removeTattoo: ({ commit }, tattooId) => commit('REMOVE_TATTOO', tattooId),
   uploadTattoo: (store, tattoo) => {
-    debugger
     const storageRef = storage.ref(`tattoos/${tattoo.source.name}`)
     const uploadTask = storageRef.put(tattoo.source)
     uploadTask.on('state_changed', {
       next: () => {},
       error: (err) => setTimeout(() => alert(err.message || err), 500),
-      complete: () => {
+      complete: async () => {
+        let source = await uploadTask.snapshot.ref.getDownloadURL()
         db.collection('tattoos')
-          .set({
+          .add({
             title: tattoo.title,
-            source: uploadTask.snapshot.downloadURL,
-            created_at: firebase.database.ServerValue.TIMESTAMP
+            source: source.split('&token')[0],
+            created_at: new Date()
           })
-          .then(() => alert('tattoo adicionada!'))
+          .then(() => {
+            setTimeout(() => alert('tattoo adicionada!'), 1000)
+            router.push('/')
+          })
           .catch((err) => setTimeout(() => alert(err.message || err), 500))
       }
     })

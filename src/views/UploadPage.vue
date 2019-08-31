@@ -6,17 +6,23 @@
 
 <script>
 import UploadTattoo from '@/components/UploadTattoo'
+
 export default {
   name: 'UploadPage',
   components: {
     UploadTattoo
+  },
+  methods: {
+    goBack() {
+      this.$router.push({ path: '/' })
+    }
   }
 }
 </script>
 
 <style lang="scss">
 .view-upload-page {
-  @include display-flex(row, nowrap, center, center);
+  @include display-flex(wrap, column, center, center);
   width: 100%;
   height: 100vh;
   background-color: #eaeef5;

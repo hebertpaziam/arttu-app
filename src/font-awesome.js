@@ -9,14 +9,22 @@ import {
 } from '@fortawesome/free-brands-svg-icons'
 
 import {
-  faUserCircle,
+  faArrowLeft,
   faCaretDown,
-  faSignOutAlt,
   faCaretUp,
-  faUpload
+  faSignOutAlt,
+  faUpload,
+  faUserCircle
 } from '@fortawesome/free-solid-svg-icons'
 
-library.add(faUserCircle, faCaretUp, faCaretDown, faSignOutAlt, faUpload)
+library.add(
+  faArrowLeft,
+  faCaretDown,
+  faCaretUp,
+  faSignOutAlt,
+  faUpload,
+  faUserCircle
+)
 library.add(faFacebookF, faInstagram, faGithub)
 
 export default Vue.component('FontAwesomeIcon', FontAwesomeIcon)

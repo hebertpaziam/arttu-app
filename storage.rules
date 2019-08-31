@@ -2,7 +2,7 @@ service firebase.storage {
   match /b/{bucket}/o {
     match /{allPaths=**} {
       allow read: if true;
-      allow write, update, delete: if request.auth.uid == userId;
+      allow write, update, delete: if request.auth != null;
     }
   }
 }

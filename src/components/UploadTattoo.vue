@@ -31,15 +31,26 @@
         required
       />
     </div>
-    <button type="submit" class="action">Enviar</button>
+    <div class="actions">
+      <button class="action -back" @click="goBack">
+        <FontAwesomeIcon class="icon" icon="arrow-left" />Voltar
+      </button>
+      <button type="submit" class="action -submit">
+        <FontAwesomeIcon class="icon" icon="upload" />Enviar
+      </button>
+    </div>
     <div v-if="sending" class="loading"></div>
   </form>
 </template>
 
 <script>
 import { mapActions } from 'vuex'
+import FontAwesomeIcon from '@/font-awesome'
 export default {
   name: 'UploadTattoo',
+  components: {
+    FontAwesomeIcon
+  },
   data() {
     return {
       sending: false,
@@ -56,6 +67,9 @@ export default {
     }
   },
   methods: {
+    goBack() {
+      this.$router.push({ path: '/' })
+    },
     processFile(e) {
       let data = e.target.files || e.dataTransfer.files
       this.tattoo.source = data[0]
@@ -68,8 +82,14 @@ export default {
       }
     },
     onSubmitHandler(e) {
-      if (this.tattoo.source === null) alert('insira uma imagem!')
-      if (this.tattoo.title === null) alert('digite um titulo')
+      if (this.tattoo.source === null) {
+        alert('insira uma imagem!')
+        return
+      }
+      if (this.tattoo.title === null) {
+        alert('digite um titulo')
+        return
+      }
 
       this.sending = true
       this.uploadTattoo(this.tattoo)
@@ -91,7 +111,7 @@ export default {
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.24), 0 0 2px rgba(0, 0, 0, 0.12);
 
   > .drop-area {
-    @include display-flex(row, wrap, center, center);
+    @include display-flex(wrap, row, center, center);
     width: 100%;
     height: calc(100% - 130px);
     margin-bottom: 30px;
@@ -136,9 +156,25 @@ export default {
       border-radius: 4px;
     }
   }
-  > .action {
-    @include btn-config($primary-color);
+  > .actions {
+    @include display-flex(wrap, row, center, space-between);
+    > .action {
+      vertical-align: middle;
+      &.-submit {
+        @include btn-config($primary-color);
+        margin: 0;
+      }
+      &.-back {
+        @include btn-config($feature-color);
+        margin: 0;
+      }
+      > .icon {
+        vertical-align: middle;
+        margin-right: 5px;
+      }
+    }
   }
+
   > .loading {
     @include backdrop-props();
   }

@@ -66,6 +66,7 @@ export default {
       width: 380px;
       height: 390px;
       margin: auto 10px;
+      border: 1px solid #aaa;
       @include bg-cover-center;
 
       > .title {
