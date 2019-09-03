@@ -1,5 +1,5 @@
 <template>
-  <div v-if="tattoos && tattoos.length" class="component-news">
+  <div class="component-news">
     <div class="bg-pattern">
       <h2 class="title">{{ title }}</h2>
     </div>

@@ -2,8 +2,8 @@ import 'jest'
 import { shallowMount, createLocalVue } from '@vue/test-utils'
 import Vuex from 'vuex'
 
-import TattooModule from '@/store/modules/tattoo'
 import News from '@/components/News.vue'
+import fakeStore from '../utils/fake-store'
 
 const localVue = createLocalVue()
 localVue.use(Vuex)
@@ -12,23 +12,7 @@ describe('News.vue', () => {
   let store
 
   beforeEach(() => {
-    store = new Vuex.Store({
-      modules: {
-        TattooModule: {
-          ...TattooModule,
-          actions: { bindTattoos: jest.fn() },
-          state: {
-            tattoos: [
-              {
-                id: 1,
-                src: 'tattoo-1.jpg',
-                desc: 'tattoo 1'
-              }
-            ]
-          }
-        }
-      }
-    })
+    store = new Vuex.Store(fakeStore)
   })
 
   it('News is a vue instance', () => {
@@ -36,9 +20,10 @@ describe('News.vue', () => {
     expect(wrapper.isVueInstance()).toBeTruthy()
   })
 
-  it('When no tattoos is requested', () => {
-    const wrapper = shallowMount(News, { store, localVue })
-    expect(wrapper.find('.component-news').exists()).toBeTruthy()
+  it('When mounted bind tattos from server', () => {
+    const spy = jest.spyOn(News.methods, 'bindTattoos')
+    shallowMount(News, { store, localVue })
+    expect(spy).toHaveBeenCalled()
   })
 
   it('When title is passed', () => {
