@@ -7,7 +7,7 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "test": "vue-cli-service test:unit",
-    "deploy": "firebase deploy"
+    "deploy": "vue-cli-service build && firebase deploy"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.21",
@@ -42,8 +42,7 @@
     "yorkie": "^2.0.0"
   },
   "gitHooks": {
-    "pre-commit": "lint-staged",
-    "pre-push": "npm run build && npm run deploy"
+    "pre-commit": "lint-staged"
   },
   "lint-staged": {
     "*.{js,vue}": [
