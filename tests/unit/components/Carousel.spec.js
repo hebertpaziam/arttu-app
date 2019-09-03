@@ -34,4 +34,31 @@ describe('Carousel.vue', () => {
       `url(${collectionItem.source})`
     )
   })
+
+  it('when the collection changes', () => {
+    const wrapper = shallowMount(Carousel, {
+      propsData: {
+        collection: [{}]
+      }
+    })
+    wrapper.vm.$refs.flickity.rerender = jest.fn()
+    const spy = jest.spyOn(wrapper.vm.$refs.flickity, 'rerender')
+
+    wrapper.setProps({
+      collection: [
+        {
+          id: 'sjPEHqQD7YgQHhoL4zJn',
+          source: 'tattoo-1.jpg',
+          title: 'tattoo 1'
+        },
+        {
+          id: 'nJz4LohHQgY7DQqHEPjs',
+          source: 'tattoo-2.jpg',
+          title: 'tattoo 2'
+        }
+      ]
+    })
+
+    expect(spy).toHaveBeenCalled()
+  })
 })
