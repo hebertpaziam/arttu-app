@@ -2,29 +2,57 @@ import 'jest'
 import { shallowMount, createLocalVue } from '@vue/test-utils'
 import Vuex from 'vuex'
 
-import fakeStore from '../utils/fake-store'
+import configStore from '../utils/fake-store'
 
 import Menu from '@/components/Menu.vue'
 
+let store
 const localVue = createLocalVue()
 localVue.use(Vuex)
 
-describe('Menu.vue', () => {
-  let store
+const generateComponent = (options) =>
+  shallowMount(Menu, {
+    store,
+    localVue,
+    stubs: ['router-link'],
+    propsData: {
+      menuOpened: false
+    },
+    ...options
+  })
 
-  beforeEach(() => (store = new Vuex.Store(fakeStore)))
+describe('Menu.vue', () => {
+  beforeEach(() => {
+    store = new Vuex.Store(configStore({ isSignedIn: true }))
+  })
 
   it('Menu is a vue instance', () => {
-    const wrapper = shallowMount(Menu, { store, localVue })
+    const wrapper = generateComponent()
     expect(wrapper.isVueInstance()).toBeTruthy()
   })
 
-  it('When menu toggle is trigged', () => {
-    const wrapper = shallowMount(Menu, { store, localVue })
+  it('When user is not authenticated', () => {
+    const wrapper = generateComponent({
+      store: new Vuex.Store(configStore({ isSignedIn: false }))
+    })
+    expect(wrapper.find('.sign-in').exists()).toBeTruthy()
+  })
 
-    wrapper.setData({ menuOpened: false })
+  it('When user is authenticated', () => {
+    const wrapper = generateComponent()
+    expect(wrapper.find('.authenticated').exists()).toBeTruthy()
+  })
+
+  it('When menu is opened', () => {
+    const wrapper = generateComponent()
     wrapper.vm.toggleMenu()
-
     expect(wrapper.vm.$data.menuOpened).toBeTruthy()
+  })
+
+  it('When menu is closed', () => {
+    const wrapper = generateComponent()
+    wrapper.setData({ menuOpened: true })
+    wrapper.vm.toggleMenu()
+    expect(wrapper.vm.$data.menuOpened).toBeFalsy()
   })
 })

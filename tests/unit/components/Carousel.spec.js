@@ -2,45 +2,52 @@ import 'jest'
 import { shallowMount } from '@vue/test-utils'
 import Carousel from '@/components/Carousel.vue'
 
+const generateComponent = (options) =>
+  shallowMount(Carousel, {
+    stubs: ['flickity'],
+    propsData: {
+      collection: [
+        {
+          id: 'Y7DQqHEPjsnJz4LohHQg',
+          source: 'tattoo-0.jpg',
+          title: 'tattoo 0'
+        }
+      ]
+    },
+    ...options
+  })
+
 describe('Carousel.vue', () => {
   it('Carousel is a vue instance', () => {
-    const wrapper = shallowMount(Carousel)
+    const wrapper = generateComponent()
     expect(wrapper.isVueInstance()).toBeTruthy()
   })
 
   it('When no collection is passed', () => {
-    const wrapper = shallowMount(Carousel)
+    const wrapper = generateComponent({
+      propsData: {
+        collection: []
+      }
+    })
+
     expect(wrapper.find('.component-carousel').exists()).toBeFalsy()
   })
 
   it('When collection is passed, checking background-image', () => {
-    const collectionItem = {
-      id: 'sjPEHqQD7YgQHhoL4zJn',
-      source: 'tattoo-1.jpg',
-      title: 'tattoo 1'
-    }
-    const wrapper = shallowMount(Carousel, {
-      propsData: {
-        collection: [collectionItem]
-      }
-    })
-    const item = wrapper.findAll('.carousel-cell').at(0)
-    expect(item.exists()).toBeTruthy()
-    expect(item.find('.title').text()).toEqual(collectionItem.title)
-    expect(item.find('.title').element.getAttribute('title')).toEqual(
-      collectionItem.title
+    const wrapper = generateComponent()
+    const elem = wrapper.findAll('.carousel-cell').at(0)
+    expect(elem.exists()).toBeTruthy()
+    expect(elem.find('.title').text()).toEqual('tattoo 0')
+    expect(elem.find('.title').element.getAttribute('title')).toEqual(
+      'tattoo 0'
     )
-    expect(item.find('.content').element.style.backgroundImage).toEqual(
-      `url(${collectionItem.source})`
+    expect(elem.find('.content').element.style.backgroundImage).toEqual(
+      'url(tattoo-0.jpg)'
     )
   })
 
   it('when the collection changes', () => {
-    const wrapper = shallowMount(Carousel, {
-      propsData: {
-        collection: [{}]
-      }
-    })
+    const wrapper = generateComponent()
     wrapper.vm.$refs.flickity.rerender = jest.fn()
     const spy = jest.spyOn(wrapper.vm.$refs.flickity, 'rerender')
 

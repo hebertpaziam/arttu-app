@@ -3,40 +3,47 @@ import { shallowMount, createLocalVue } from '@vue/test-utils'
 import Vuex from 'vuex'
 
 import News from '@/components/News.vue'
-import fakeStore from '../utils/fake-store'
+import configStore from '../utils/fake-store'
 
+let store
 const localVue = createLocalVue()
 localVue.use(Vuex)
 
-describe('News.vue', () => {
-  let store
+const generateComponent = (options) =>
+  shallowMount(News, {
+    store,
+    localVue,
+    ...options
+  })
 
+describe('News.vue', () => {
   beforeEach(() => {
-    store = new Vuex.Store(fakeStore)
+    store = new Vuex.Store(configStore())
   })
 
   it('News is a vue instance', () => {
-    const wrapper = shallowMount(News, { store, localVue })
+    const wrapper = generateComponent()
     expect(wrapper.isVueInstance()).toBeTruthy()
   })
 
   it('When mounted bind tattos from server', () => {
     const spy = jest.spyOn(News.methods, 'bindTattoos')
-    shallowMount(News, { store, localVue })
+    generateComponent()
     expect(spy).toHaveBeenCalled()
   })
 
   it('When title is passed', () => {
     const title = 'NOVIDADES'
-    const wrapper = shallowMount(News, {
-      store,
-      localVue,
-      propsData: { title }
+    const wrapper = generateComponent({
+      propsData: {
+        title
+      }
     })
     expect(wrapper.find('.title').text()).toMatch(title)
   })
+
   it('When no title is passed', () => {
-    const wrapper = shallowMount(News, { store, localVue })
+    const wrapper = generateComponent()
     expect(wrapper.find('.title').text()).toMatch('')
   })
 })
