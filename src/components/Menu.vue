@@ -18,10 +18,10 @@
         </div>
       </button>
       <div class="content" @click.capture="toggleMenu">
-        <router-link to="/upload" class="action">
+        <router-link to="/upload" class="action -upload">
           <FontAwesomeIcon icon="upload" class="icon" />Upload
         </router-link>
-        <button type="button" class="action" @click="signOut">
+        <button type="button" class="action -sign-out" @click="signOut">
           <FontAwesomeIcon icon="sign-out-alt" class="icon" />Sair
         </button>
       </div>
