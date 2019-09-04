@@ -39,17 +39,13 @@ describe('Menu.vue', () => {
   })
 
   it('When user is not authenticated and click on button to sign-in', () => {
-    const storeConfig = configStore({ isSignedIn: false })
-    const spySignIn = storeConfig.modules.AuthModule.actions.signInWithGithub
+    const spy = jest.spyOn(Menu.methods, 'signInWithGithub')
     const wrapper = generateComponent({
-      store: new Vuex.Store(storeConfig)
+      store: new Vuex.Store(configStore({ isSignedIn: false }))
     })
 
-    const signInBtn = wrapper.find('.sign-in')
-    expect(signInBtn.exists()).toBeTruthy()
-
-    signInBtn.trigger('click')
-    expect(spySignIn).toHaveBeenCalled()
+    wrapper.find('.sign-in').trigger('click')
+    expect(spy).toHaveBeenCalled()
   })
 
   it('When user is authenticated', () => {
@@ -58,17 +54,14 @@ describe('Menu.vue', () => {
   })
 
   it('When user is authenticated and click on button to sign-out', () => {
-    const storeConfig = configStore({ isSignedIn: true })
-    const spySignOLut = storeConfig.modules.AuthModule.actions.signOut
-    const wrapper = generateComponent({
-      store: new Vuex.Store(storeConfig)
-    })
+    const spy = jest.spyOn(Menu.methods, 'signOut')
+    const wrapper = generateComponent()
 
     const signOutBtn = wrapper.find('.action.-sign-out')
     expect(signOutBtn.exists()).toBeTruthy()
 
     signOutBtn.trigger('click')
-    expect(spySignOLut).toHaveBeenCalled()
+    expect(spy).toHaveBeenCalled()
   })
 
   it('When menu is opened', () => {

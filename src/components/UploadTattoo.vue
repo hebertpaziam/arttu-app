@@ -76,10 +76,7 @@ export default {
       const reader = new FileReader()
 
       reader.readAsDataURL(data[0])
-      reader.onloadend = () => {
-        const img = reader.result
-        this.thumb = img
-      }
+      reader.onloadend = () => (this.thumb = reader.result)
     },
     onSubmitHandler(e) {
       if (this.tattoo.source === null) {
@@ -87,7 +84,7 @@ export default {
         return
       }
       if (this.tattoo.title === null) {
-        alert('digite um titulo')
+        alert('digite um titulo!')
         return
       }
 
