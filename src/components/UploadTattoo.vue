@@ -89,7 +89,7 @@ export default {
       }
 
       this.sending = true
-      this.uploadTattoo(this.tattoo)
+      this.uploadTattoo(this.tattoo).then(() => this.$router.push('/'))
     },
     ...mapActions('TattooModule', ['uploadTattoo'])
   }

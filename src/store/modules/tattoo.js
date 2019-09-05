@@ -1,5 +1,4 @@
 import firebase from '@/firebase'
-import router from '@/router'
 
 const db = firebase.firestore()
 const storage = firebase.storage()
@@ -19,25 +18,31 @@ const mutations = {
 const actions = {
   removeTattoo: ({ commit }, tattooId) => commit('REMOVE_TATTOO', tattooId),
   uploadTattoo: (store, tattoo) => {
-    const storageRef = storage.ref(`tattoos/${tattoo.source.name}`)
-    const uploadTask = storageRef.put(tattoo.source)
-    uploadTask.on('state_changed', {
-      next: () => {},
-      error: (err) => setTimeout(() => alert(err.message || err), 500),
-      complete: async () => {
-        let source = await uploadTask.snapshot.ref.getDownloadURL()
-        db.collection('tattoos')
-          .add({
-            title: tattoo.title,
-            source: source.split('&token')[0],
-            created_at: new Date()
-          })
-          .then(() => {
-            setTimeout(() => alert('tattoo adicionada!'), 1000)
-            router.push('/')
-          })
-          .catch((err) => setTimeout(() => alert(err.message || err), 500))
-      }
+    return new Promise((resolve, reject) => {
+      const storageRef = storage.ref(`tattoos/${tattoo.source.name}`)
+      const uploadTask = storageRef.put(tattoo.source)
+
+      uploadTask.on('state_changed', {
+        next: () => {},
+        error: (err) => setTimeout(() => alert(err.message || err), 500),
+        complete: async () => {
+          let source = await uploadTask.snapshot.ref.getDownloadURL()
+          db.collection('tattoos')
+            .add({
+              title: tattoo.title,
+              source: source.split('&token')[0],
+              created_at: new Date()
+            })
+            .then(() => {
+              setTimeout(() => alert('tattoo adicionada!'), 1000)
+              resolve()
+            })
+            .catch((err) => {
+              setTimeout(() => alert(err.message || err), 500)
+              reject(err)
+            })
+        }
+      })
     })
   },
   bindTattoos: ({ commit }) =>

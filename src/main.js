@@ -1,12 +1,12 @@
 import Vue from 'vue'
-import router from './router'
-import store from './store/index'
+import router from '@/router'
+import store from '@/store/index'
 
 import App from './App'
 
-import './firebase'
-import './flickity'
-import './font-awesome'
+import '@/firebase'
+import '@/flickity'
+import '@/font-awesome'
 
 Vue.config.productionTip = false
 
