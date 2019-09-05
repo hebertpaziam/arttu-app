@@ -36,7 +36,7 @@ describe('UploadTattoo.vue', () => {
     expect(wrapper.isVueInstance()).toBeTruthy()
   })
 
-  it('The file is dropped in the label dropzone', () => {
+  it('When the file is dropped in the label dropzone', () => {
     const spyProcessFile = jest.spyOn(UploadTattoo.methods, 'processFile')
     const wrapper = generateComponent()
     wrapper.find('#dropArea').trigger('drop', {
@@ -45,6 +45,23 @@ describe('UploadTattoo.vue', () => {
       }
     })
     expect(spyProcessFile).toHaveBeenCalled()
+  })
+
+  it('When file is selected from input', () => {
+    const spyProcessFile = jest.spyOn(UploadTattoo.methods, 'processFile')
+    const wrapper = generateComponent()
+    wrapper.find('#tattooId').trigger('click', {
+      files: [new Blob(['tattoo'], { type: 'application/image' })]
+    })
+    expect(spyProcessFile).toHaveBeenCalled()
+  })
+
+  it('When file is processed', () => {
+    const wrapper = generateComponent()
+    wrapper.find('#tattooId').trigger('click', {
+      files: [new Blob(['tattoo'], { type: 'application/image' })]
+    })
+    expect(wrapper.vm.$data.source).not.toBeNull()
   })
 
   it('When form is submited without image', () => {
